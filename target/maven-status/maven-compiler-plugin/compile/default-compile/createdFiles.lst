@@ -1,0 +1,10 @@
+com\mycompany\drturnosgui\ObrasSocialesGUI.class
+com\mycompany\drturnosgui\DrTurnosGUI.class
+com\mycompany\drturnosgui\Cliente.class
+com\mycompany\drturnosgui\AgregarTurnosVacios.class
+com\mycompany\drturnosgui\ClientesGUI.class
+com\mycompany\drturnosgui\Turno.class
+com\mycompany\drturnosgui\ModificarTurnoGUI.class
+com\mycompany\drturnosgui\ObraSocial.class
+com\mycompany\drturnosgui\AgregarClienteGUI.class
+com\mycompany\drturnosgui\ModificarClienteGUI.class
