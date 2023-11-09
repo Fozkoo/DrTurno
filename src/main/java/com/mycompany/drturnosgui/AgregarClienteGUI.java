@@ -27,7 +27,7 @@ public class AgregarClienteGUI extends JFrame {
     private void initUI() {
         setTitle("Agregar Cliente");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(300, 200);
+        setSize(400, 300);
 
         dniField = new JTextField();
         nombreField = new JTextField();
@@ -49,10 +49,16 @@ public class AgregarClienteGUI extends JFrame {
         panel.add(new JLabel("Teléfono:"));
         panel.add(telefonoField);
         panel.add(new JLabel("Obra Social:"));
-        panel.add(obraSocialComboBox); 
+        panel.add(obraSocialComboBox);   
+        panel.add(new JPanel()); // Espacio en blanco para separar
         panel.add(agregarButton);
 
         add(panel);
+
+        agregarButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+        // Establece un tamaño preferido más pequeño para el botón
+        agregarButton.setPreferredSize(new Dimension(100, 30));
 
         setLocationRelativeTo(null);
         setVisible(true);
