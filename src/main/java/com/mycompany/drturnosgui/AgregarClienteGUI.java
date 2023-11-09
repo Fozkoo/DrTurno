@@ -21,6 +21,8 @@ public class AgregarClienteGUI extends JFrame {
        this.clientes = clientes;
        initUI();
     }
+    
+    
 
     private void initUI() {
         setTitle("Agregar Cliente");

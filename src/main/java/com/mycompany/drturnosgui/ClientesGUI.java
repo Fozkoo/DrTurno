@@ -43,11 +43,23 @@ public class ClientesGUI extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
-    private DefaultTableModel createTableModel() {
-        String[] columnNames = {"DNI", "Nombre", "Telefono", "Obra Social"};
-        return new DefaultTableModel(columnNames, 0);
+   
+   public class CustomTableModel extends DefaultTableModel {
+    public CustomTableModel(Object[] columnNames, int rowCount) {
+        super(columnNames, rowCount);
     }
+
+    @Override
+    public boolean isCellEditable(int row, int column) {
+        // Devuelve false para hacer que todas las celdas no sean editables
+        return false;
+    }
+}
+
+   private CustomTableModel createTableModel() {
+    Object[] columnNames = {"DNI", "Nombre", "Telefono", "Obra Social"};
+    return new CustomTableModel(columnNames, 0);
+}
 
     private void loadTableData() {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
