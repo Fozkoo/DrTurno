@@ -41,11 +41,24 @@ public class DrTurnosGUI extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-    // Modelo de la tabla
-    private DefaultTableModel createTableModel() {
-        String[] columnNames = {"Día", "Hora", "DNI", "Nombre", "Teléfono", "Obra Social", "Motivo"};
-        return new DefaultTableModel(columnNames, 0);
+    
+    public class CustomTableModel extends DefaultTableModel {
+
+    public CustomTableModel(String[] columnNames, int rowCount) {
+        super(columnNames, rowCount);
     }
+
+    @Override
+    public boolean isCellEditable(int row, int column) {
+        return false;
+    }
+}
+    
+
+    private CustomTableModel createTableModel() {
+    String[] columnNames = {"Día", "Hora", "DNI", "Nombre", "Teléfono", "Obra Social", "Motivo"};
+    return new CustomTableModel(columnNames, 0);
+}
     
     //Botones y Tabla
     private void createUIComponents() {
