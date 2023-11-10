@@ -79,5 +79,8 @@ public class ModificarClienteGUI extends JFrame {
                 break;
             }
         }
+        ClientesGUI cli=new ClientesGUI(clientes, obrasSociales);
+        cli.setVisible(true);
+        dispose();
     }
 }

@@ -95,6 +95,7 @@ public class ClientesGUI extends JFrame {
     private void openAgregarClienteGUI(){
         AgregarClienteGUI agregarClienteGUI = new AgregarClienteGUI (clientes, obrasSociales);
         agregarClienteGUI.setVisible(true);
+        dispose();
     }
     
     private void openModificarClienteGUI() {
@@ -103,6 +104,7 @@ public class ClientesGUI extends JFrame {
             DefaultTableModel model = (DefaultTableModel) table.getModel();
             ModificarClienteGUI modificarClienteGUI = new ModificarClienteGUI(obrasSociales, clientes, model, selectedRow);
             modificarClienteGUI.setVisible(true);
+             dispose();
         } else {
            showError("Selecciona un cliente para modificar.");
         }

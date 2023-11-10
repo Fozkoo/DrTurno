@@ -74,6 +74,8 @@ public class AgregarClienteGUI extends JFrame {
     if (!clienteExists(nuevoCliente)) {
         System.out.println("Agregando...");
         clientes.add(nuevoCliente);
+        ClientesGUI cli=new ClientesGUI(clientes, obrasSociales);
+        cli.setVisible(true);
         dispose();
     } else {
         showError("Ya existe un cliente registrado con el mismo DNI.");
