@@ -19,13 +19,13 @@ public class ModificarClienteGUI extends JFrame {
   private DefaultTableModel model;
   private int selectedRow;
 
-  public ModificarClienteGUI(Set<ObraSocial> obrasSociales, Set<Cliente> clientes,DefaultTableModel model, int selectedRow) {
-      this.obrasSociales = obrasSociales;
-      this.clientes = clientes;
-      this.model = model;
-      this.selectedRow = selectedRow;
-      initUI();
-  }
+    public ModificarClienteGUI(Set<ObraSocial> obrasSociales, Set<Cliente> clientes,DefaultTableModel model, int selectedRow) {
+        this.obrasSociales = obrasSociales;
+        this.clientes = clientes;
+        this.model = model;
+        this.selectedRow = selectedRow;
+        initUI();
+    }
 
     private void initUI() {
         setTitle("Modificar Cliente");
