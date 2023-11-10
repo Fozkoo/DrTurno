@@ -65,17 +65,32 @@ public class AgregarClienteGUI extends JFrame {
     }
 
     private void agregarCliente() {
-        String nuevoDni = dniField.getText();
-        String nuevoNombre = nombreField.getText();
-        String nuevoTelefono = telefonoField.getText();
-        String nuevaObraSocial = (String) obraSocialComboBox.getSelectedItem();
+    String nuevoDni = dniField.getText();
+    String nuevoNombre = nombreField.getText();
+    String nuevoTelefono = telefonoField.getText();
+    String nuevaObraSocial = (String) obraSocialComboBox.getSelectedItem();
 
-        Cliente nuevoCliente = new Cliente(nuevoDni, nuevoNombre, nuevoTelefono, nuevaObraSocial);
-            if (!clientes.contains(nuevoCliente)) {
-                System.out.println("Agregando...");
-                clientes.add(nuevoCliente);
-                dispose();
-            }
-
+    Cliente nuevoCliente = new Cliente(nuevoDni, nuevoNombre, nuevoTelefono, nuevaObraSocial);
+    if (!clienteExists(nuevoCliente)) {
+        System.out.println("Agregando...");
+        clientes.add(nuevoCliente);
+        dispose();
+    } else {
+        showError("Ya existe un cliente registrado con el mismo DNI.");
     }
+ }
+  
+   private boolean clienteExists(Cliente cliente) {
+    for (Cliente existingCliente : clientes) {
+        if (existingCliente.getDni().equals(cliente.getDni())) {
+            return true;
+        }
+    }
+    return false;
+}
+   
+ private void showError(String message) {
+    JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+}  
+  
 }
