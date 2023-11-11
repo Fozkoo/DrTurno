@@ -81,7 +81,6 @@ public class ClientesGUI extends JFrame {
         addButton(buttonPanel, "Modificar", e -> openModificarClienteGUI());
         addButton(buttonPanel, "Eliminar", e -> limpiarCamposSeleccionados());
         addButton(buttonPanel, "Cerrar", e -> Cerrar());
-        addButton(buttonPanel, "Refrescar Tabla", e -> loadTableData());
         add(buttonPanel, BorderLayout.SOUTH);
     }
     
