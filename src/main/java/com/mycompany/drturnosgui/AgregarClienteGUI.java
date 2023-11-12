@@ -22,8 +22,6 @@ public class AgregarClienteGUI extends JFrame {
        initUI();
     }
     
-    
-
     private void initUI() {
         setTitle("Agregar Cliente");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -71,7 +69,7 @@ public class AgregarClienteGUI extends JFrame {
     String nuevaObraSocial = (String) obraSocialComboBox.getSelectedItem();
 
     Cliente nuevoCliente = new Cliente(nuevoDni, nuevoNombre, nuevoTelefono, nuevaObraSocial);
-    if (!clienteExists(nuevoCliente)) {
+    if (clienteExists(nuevoCliente)) {
         System.out.println("Agregando...");
         clientes.add(nuevoCliente);
         ClientesGUI cli=new ClientesGUI(clientes, obrasSociales);

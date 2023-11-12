@@ -102,29 +102,6 @@ public class DrTurnosGUI extends JFrame {
         }
     }
 
-    private void openAgregarDias() {      
-        try {
-            int lastRow = model.getRowCount() - 1;
-            
-            String fechaInicioStr = model.getValueAt(lastRow, 0).toString();
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-            Date fechaInicioDate = sdf.parse(fechaInicioStr);
-            
-            Calendar c = Calendar.getInstance();
-            c.setTime(fechaInicioDate);
-            c.add(Calendar.DATE, 30);
-            Date fechaFin = c.getTime();
-            
-            String fechaInicio = sdf.format(fechaInicioDate);
-            String fechaFinStr = sdf.format(fechaFin);
-            
-            AgregarTurnosVacios agregarTurnosVacios = new AgregarTurnosVacios(fechaInicio, fechaFinStr);
-            agregarTurnosVacios.setVisible(true);
-        } catch (ParseException ex) {
-            
-        }
-    }
-
     // Borra los campos de la tabla
     private void limpiarCamposSeleccionados() {
         int selectedRow = table.getSelectedRow();
