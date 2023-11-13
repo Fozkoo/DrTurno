@@ -1,5 +1,5 @@
 package com.mycompany.drturnosgui;
-// PRUEBAAA GITTTTT tttttttttttt
+// Dr Turnos 1.2 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
