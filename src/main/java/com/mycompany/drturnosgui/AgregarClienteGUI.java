@@ -69,14 +69,15 @@ public class AgregarClienteGUI extends JFrame {
     String nuevaObraSocial = (String) obraSocialComboBox.getSelectedItem();
 
     Cliente nuevoCliente = new Cliente(nuevoDni, nuevoNombre, nuevoTelefono, nuevaObraSocial);
-    if (clientes.contains(nuevoDni)) {
+    
+    if (!clienteExists(nuevoCliente)) {
         System.out.println("Agregando...");
         clientes.add(nuevoCliente);
         dispose();
     } else {
         showError("Ya existe un cliente registrado con el mismo DNI.");
     }
- }
+}
   
    private boolean clienteExists(Cliente cliente) {
     for (Cliente existingCliente : clientes) {
