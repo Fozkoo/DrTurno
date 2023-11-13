@@ -8,12 +8,8 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -152,34 +148,34 @@ public class DrTurnosGUI extends JFrame {
     
     // Carga los datos del archivo a la tabla
     private void loadTableData() {
-       try {
-           BufferedReader br = new BufferedReader(new FileReader("turnos.txt"));
-           String line;
-           while ((line = br.readLine()) != null) {
-               String[] fields = line.split(", ");
-               DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-               LocalDate fecha = LocalDate.parse(fields[0], formatter);
-               LocalDate now = LocalDate.now();
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("turnos.txt"));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] fields = line.split(", ");
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate fecha = LocalDate.parse(fields[0], formatter);
+                LocalDate now = LocalDate.now();
 
-               if (fields.length == 1) {
-                   if (!fecha.isBefore(now)) {
-                      model.addRow(fields);
-                   }
-               }
+                if (fields.length == 1) {
+                    if (!fecha.isBefore(now)) {
+                        model.addRow(fields);
+                    }
+                }
 
-               if (fields.length >= 2) {
-                   if (!fecha.isBefore(now)) {
-                      model.addRow(fields);
-                      String hora = fields[1];
-                      String turnoKey = fecha + ", " + hora;
-                      turnosSet.add(turnoKey);
-                   }
-               }
-           }
-           br.close();
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
+                if (fields.length >= 2) {
+                    if (!fecha.isBefore(now)) {
+                        model.addRow(fields);
+                        String hora = fields[1];
+                        String turnoKey = fecha + ", " + hora;
+                        turnosSet.add(turnoKey);
+                    }
+                }
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void showError(String message) {
