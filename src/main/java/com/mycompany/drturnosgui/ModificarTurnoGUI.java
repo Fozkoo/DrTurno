@@ -127,7 +127,7 @@ class ModificarTurnoGUI extends JFrame {
             model.setValueAt(nuevoMotivo, selectedRow, 6);
 
             Cliente nuevoCliente = new Cliente(nuevoDni, nuevoNombre, nuevoTelefono, nuevaObrasocial);
-            if (!clientes.contains(nuevoCliente)) {
+            if (clientes.contains(nuevoCliente)) {
                 clientes.add(nuevoCliente);
             }
 
