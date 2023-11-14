@@ -36,7 +36,7 @@ public class AgregarClienteGUI extends JFrame {
              obraSocialComboBox.addItem(obraSocial.getObraSocial());
         }
 
-        JButton agregarButton = new JButton("Agregar");
+        JButton agregarButton = new JButton("Guardar Cliente");
         agregarButton.addActionListener(e -> agregarCliente());
 
         JPanel panel = new JPanel(new GridLayout(5, 2));
