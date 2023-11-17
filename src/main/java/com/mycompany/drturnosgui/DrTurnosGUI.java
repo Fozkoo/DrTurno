@@ -1,5 +1,5 @@
 package com.mycompany.drturnosgui;
-// Dr Turnos 1.2 
+// Dr Turnos 1.5
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;

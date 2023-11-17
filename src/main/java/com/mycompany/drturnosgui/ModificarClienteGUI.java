@@ -28,6 +28,7 @@ public class ModificarClienteGUI extends JFrame {
     }
 
     private void initUI() {
+      
         setTitle("Modificar Cliente");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(300, 200);
@@ -64,23 +65,70 @@ public class ModificarClienteGUI extends JFrame {
       setLocationRelativeTo(null);
       setVisible(true);
     }
-
+    
     private void modificarCliente() {
         String dni = campoDni.getText();
         String nombre = campoNombre.getText();
         String telefono = campoTelefono.getText();
         String obraSocial = (String) obraSocialComboBox.getSelectedItem();
 
-        for (Cliente cliente : clientes) {
-            if (cliente.getDni().equals(dni)) {
-                cliente.setNombre(nombre);
-                cliente.setTelefono(telefono);
-                cliente.setObraSocial(obraSocial);
-                break;
-            }
+        if (!dni.matches("\\d+")) {
+        showError("El DNI debe contener solo números.");
+        return;
         }
-        ClientesGUI cli=new ClientesGUI(clientes, obrasSociales);
+
+    // Validación de Nombre: No debe contener números
+        if (nombre.matches(".*\\d.*")) {
+        showError("El Nombre no debe contener números.");
+        return;
+        }
+
+    // Validación de Teléfono: Solo permite números
+    if (!telefono.matches("\\d+")) {
+        showError("El Teléfono debe contener solo números.");
+        return;
+    }   
+        // Realizar la modificación en la lista después de las validaciones
+ 
+        if (isAlphanumeric(nombre) && isAlphanumeric(telefono)) {
+            for (Cliente cliente : clientes) {
+                if (cliente.getDni().equals(dni)){
+                    cliente.setNombre(nombre);
+                    cliente.setTelefono(telefono);
+                    cliente.setObraSocial(obraSocial);
+                    break;
+                }
+        }
+            
+      } else {
+         if (!isAlphanumeric(nombre)) {
+            showError("El nombre solo puede contener letras");
+            return;
+        }
+        if (!isAlphanumeric(telefono)) {
+            showError("El telefono solo puede contener numeros");
+            return;
+        }
+      }
+        // Resto del código
+        ClientesGUI cli = new ClientesGUI(clientes, obrasSociales);
         cli.setVisible(true);
         dispose();
-    }
+
+}
+
+    private void showError(String message) {
+    JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }  
+    
+    public boolean isAlphanumeric(String str){
+
+        char[] charArray = str.toCharArray();
+        for(char c:charArray)
+        {
+            if (!Character.isLetterOrDigit(c))
+                return false;
+        }
+        return true;
+    }    
 }

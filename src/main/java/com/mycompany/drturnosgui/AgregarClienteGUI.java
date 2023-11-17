@@ -68,8 +68,26 @@ public class AgregarClienteGUI extends JFrame {
     String nuevoTelefono = telefonoField.getText();
     String nuevaObraSocial = (String) obraSocialComboBox.getSelectedItem();
 
+    // Validación de DNI: Solo permite números
+    if (!nuevoDni.matches("\\d+")) {
+        showError("El DNI debe contener solo números.");
+        return;
+    }
+
+    // Validación de Nombre: No debe contener números
+    if (nuevoNombre.matches(".*\\d.*")) {
+        showError("El Nombre no debe contener números.");
+        return;
+    }
+
+    // Validación de Teléfono: Solo permite números
+    if (!nuevoTelefono.matches("\\d+")) {
+        showError("El Teléfono debe contener solo números.");
+        return;
+    }
+
     Cliente nuevoCliente = new Cliente(nuevoDni, nuevoNombre, nuevoTelefono, nuevaObraSocial);
-    
+
     if (!clienteExists(nuevoCliente)) {
         System.out.println("Agregando...");
         clientes.add(nuevoCliente);
