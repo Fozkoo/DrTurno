@@ -46,13 +46,13 @@ public class ModificarClienteGUI extends JFrame {
         campoNombre.setText((String) model.getValueAt(selectedRow, 1));
         campoTelefono.setText((String) model.getValueAt(selectedRow, 2));
 
-        JButton modificarButton = new JButton("Modificar");
+        JButton modificarButton = new JButton("Guardar cambios");
         modificarButton.addActionListener(e -> modificarCliente());
 
         JPanel panel = new JPanel(new GridLayout(5, 2));
         panel.add(new JLabel("DNI:"));
         panel.add(campoDni);
-        panel.add(new JLabel("Nombre:"));
+        panel.add(new JLabel("Nombre y Apellido:"));
         panel.add(campoNombre);
         panel.add(new JLabel("Teléfono:"));
         panel.add(campoTelefono);
@@ -78,10 +78,11 @@ public class ModificarClienteGUI extends JFrame {
         }
 
     // Validación de Nombre: No debe contener números
-        if (nombre.matches(".*\\d.*")) {
+       if (nombre.matches(".*\\d.*")) {
         showError("El Nombre no debe contener números.");
         return;
         }
+
 
     // Validación de Teléfono: Solo permite números
     if (!telefono.matches("\\d+")) {
@@ -118,7 +119,7 @@ public class ModificarClienteGUI extends JFrame {
 }
 
     private void showError(String message) {
-    JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
     }  
     
     public boolean isAlphanumeric(String str){
@@ -126,9 +127,11 @@ public class ModificarClienteGUI extends JFrame {
         char[] charArray = str.toCharArray();
         for(char c:charArray)
         {
-            if (!Character.isLetterOrDigit(c))
+            if (!Character.isLetterOrDigit(c) && !Character.isWhitespace(c))
                 return false;
         }
         return true;
-    }    
+    }
+
+    
 }

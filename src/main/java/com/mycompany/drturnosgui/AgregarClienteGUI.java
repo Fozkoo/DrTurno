@@ -42,7 +42,7 @@ public class AgregarClienteGUI extends JFrame {
         JPanel panel = new JPanel(new GridLayout(5, 2));
         panel.add(new JLabel("DNI:"));
         panel.add(dniField);
-        panel.add(new JLabel("Nombre:"));
+        panel.add(new JLabel("Nombre y Apellido:"));
         panel.add(nombreField);
         panel.add(new JLabel("Teléfono:"));
         panel.add(telefonoField);
@@ -78,7 +78,7 @@ public class AgregarClienteGUI extends JFrame {
     if (nuevoNombre.matches(".*\\d.*")) {
         showError("El Nombre no debe contener números.");
         return;
-    }
+        }
 
     // Validación de Teléfono: Solo permite números
     if (!nuevoTelefono.matches("\\d+")) {
