@@ -117,7 +117,7 @@ class ModificarTurnoGUI extends JFrame {
            
            // Guardar Cliente
            Cliente nuevoCliente = new Cliente(nuevoDni, nuevoNombre, nuevoTelefono, nuevaObrasocial);
-            if (clientes.contains(nuevoCliente)) {
+            if (!clientes.contains(nuevoDni)) {
                clientes.add(nuevoCliente);
             }
             

@@ -8,8 +8,12 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -55,7 +59,7 @@ public class DrTurnosGUI extends JFrame {
     String[] columnNames = {"Día", "Hora", "DNI", "Nombre", "Teléfono", "Obra Social", "Motivo"};
     return new CustomTableModel(columnNames, 0);
 }
-
+    
     //Botones y Tabla
     private void createUIComponents() {
     table = new JTable(model);
@@ -95,6 +99,29 @@ public class DrTurnosGUI extends JFrame {
             modificarTurnoGUI.setVisible(true);
         } else {
             showError("Selecciona un turno para modificar.");
+        }
+    }
+
+    private void openAgregarDias() {      
+        try {
+            int lastRow = model.getRowCount() - 1;
+            
+            String fechaInicioStr = model.getValueAt(lastRow, 0).toString();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date fechaInicioDate = sdf.parse(fechaInicioStr);
+            
+            Calendar c = Calendar.getInstance();
+            c.setTime(fechaInicioDate);
+            c.add(Calendar.DATE, 30);
+            Date fechaFin = c.getTime();
+            
+            String fechaInicio = sdf.format(fechaInicioDate);
+            String fechaFinStr = sdf.format(fechaFin);
+            
+            AgregarTurnosVacios agregarTurnosVacios = new AgregarTurnosVacios(fechaInicio, fechaFinStr);
+            agregarTurnosVacios.setVisible(true);
+        } catch (ParseException ex) {
+            
         }
     }
 
@@ -190,7 +217,7 @@ public class DrTurnosGUI extends JFrame {
     // Cerrar aplicacion
     private void Cerrar() {
         GuardarHashSets();
-        dispose();
+         dispose();
     }
 
     private void guardarHashSet(Set<? extends Serializable> set, String fileName) {
